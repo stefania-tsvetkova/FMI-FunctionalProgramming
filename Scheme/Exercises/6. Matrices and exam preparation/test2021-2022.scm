@@ -57,8 +57,6 @@
 
 ; Problem 3
 
-
-
 (define (is-major? ll)
   (define (smaller? a b)
     (if (null? a)
