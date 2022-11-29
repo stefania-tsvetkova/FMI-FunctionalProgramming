@@ -48,8 +48,9 @@
 (define (fast-pow x n)
   (cond
     ((= n 0) 1)
+    ((= n 2) (* x x))
     ((my-odd? n) (* x (fast-pow x (- n 1))))
-    (else (* (fast-pow x (/ n 2)) (fast-pow x (/ n 2))))))
+    (else (fast-pow (fast-pow x (/ n 2)) 2))))
 
 ; factorial n
 (define (factorial n)
