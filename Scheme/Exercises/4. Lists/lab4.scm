@@ -11,8 +11,10 @@
   (if (< n 0)
       (+ 1 (count-divisors (- n)))
       (accumulate + 0 1 n divisor? 1+)))
+
 ;; задачи с наредени двойки
 ;; (x . y) - рационално число, х - числител, у - знаменател
+
 (define (make-rational x y)
   (cons x y))
 
@@ -71,7 +73,7 @@
     ((= n 1) (car l))
     (else (n-th (cdr l) (- n 1)))))
 
-;; count-occurs x l - намира броя на среюанията на x в l
+;; count-occurs x l - намира броя на срещанията на x в l
 (define (count-occurs x l)
   (cond
     ((null? l) 0)
@@ -114,8 +116,11 @@
     ((eqv? x (car l)) (remove-all x (cdr l)))
     (else (cons (car l) (remove-all x (cdr l))))))
 
-;; reverse l - обръща реда на елементите на l
-
+;; my-reverse l - обръща реда на елементите на l
+(define (my-reverse l)
+  (if (null? l)
+      l
+      (append (reverse (cdr l)) (list (car l)))))
 
 ;; my-map f l - прилага функцията f върху елементите на l
 (define (my-map f l)

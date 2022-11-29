@@ -36,13 +36,16 @@
   (accumulate product 1 1 n id 1+))
 
 ;; 3. all? a b pred - проверка дали всички числа в интервала [a, b] удовлетворяват предиката pred
-;; ???
-;(define (all? a b pred)
-;  (define (1+ x) (+ 1 x))
-;  (aaccumulate and #t a b pred 1+))
+(define (all? a b pred)
+  (define (1+ x) (+ 1 x))
+  (define (&& a b) (and a b))
+  (accumulate && #t a b pred 1+))
 
 ;; 4. any? a b pred - проверка дали някой елемент в интервала удовлетворява предиката pred
-
+(define (any? a b pred)
+  (define (1+ x) (+ 1 x))
+  (define (|| a b) (or a b))
+  (accumulate || #t a b pred 1+))
 
 ;; 5. count-primes a b - брои колко прости числа има в интервала
 (define (count-primes a b)
